@@ -4,7 +4,7 @@ const Available = ({ players,handleAddPlayer }) => {
   return (
     <div className="">
       <h1>Players: {players.length}</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {players.map((players) => (
           <div key={players.playerId}>
             <div className="card bg-base-100 border-2 border-slate-400">

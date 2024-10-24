@@ -16,11 +16,15 @@ const App = () => {
     .then(data => setPlayers(data))
   },[])
 
-  const handleAddPlayer =(player) =>{
-    const newSelectPlayer = [...selectPlayer, player];
-    
-    setSelectPlayer(newSelectPlayer)
-  }
+  const handleAddPlayer = (player) => {
+    const isExist = selectPlayer.find(previousPlayer => previousPlayer.playerId === player.playerId);
+    if (!isExist && selectPlayer.length<6) {
+      const newSelectPlayer = [...selectPlayer, player];
+      setSelectPlayer(newSelectPlayer);
+    } else {
+      alert('Player is already Exist');
+    }
+  };
   
   
   return (
