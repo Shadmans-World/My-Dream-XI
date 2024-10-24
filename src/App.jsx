@@ -8,6 +8,7 @@ import { useEffect } from "react";
 const App = () => {
 
   const [players, setPlayers] = useState([]);
+  const [selectPlayer, setSelectPlayer] = useState([])
 
   useEffect(()=>{
     fetch('players.json')
@@ -15,6 +16,13 @@ const App = () => {
     .then(data => setPlayers(data))
   },[])
 
+  const handleAddPlayer =(player) =>{
+    const newSelectPlayer = [...selectPlayer, player];
+    
+    setSelectPlayer(newSelectPlayer)
+  }
+  
+  
   return (
     <div className="max-w-[1440px] mx-auto">
       {/* Navbar */}
@@ -23,7 +31,7 @@ const App = () => {
       <Banner></Banner>
 
       {/* Players */}
-      <PlayerList players={players}></PlayerList>
+      <PlayerList players={players} selectPlayer={selectPlayer} handleAddPlayer={handleAddPlayer}></PlayerList>
           {/* Available */}
           {/* Selected */}
       

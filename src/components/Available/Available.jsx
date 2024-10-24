@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Available = ({ players }) => {
+const Available = ({ players,handleAddPlayer }) => {
   return (
     <div className="">
       <h1>Players: {players.length}</h1>
@@ -42,7 +42,7 @@ const Available = ({ players }) => {
                     <hr />
                     <div className="flex justify-between items-center">
                         <h3 className="font-medium">Price: ${players.biddingPrice}</h3>
-                        <button className="btn">Choose Player</button>
+                        <button onClick={()=>handleAddPlayer(players)} className="btn">Choose Player</button>
                     </div>
                 </div>
               </div>
@@ -58,4 +58,5 @@ export default Available;
 
 Available.propTypes = {
   players: PropTypes.array.isRequired,
+  handleAddPlayer: PropTypes.func.isRequired
 };
