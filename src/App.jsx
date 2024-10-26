@@ -27,7 +27,7 @@ const App = () => {
     // Remove the player from the selected players array
     const newSelectPlayer = selectPlayer.filter((player) => player.playerId !== playerId);
     setSelectPlayer(newSelectPlayer); 
-    toast.success('Removed player from the team successfully')
+    toast.success(`Removed a player from the team successfully`)
 };
 
 
