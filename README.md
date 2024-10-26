@@ -1,8 +1,19 @@
-# React + Vite
+# My Dream XI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌐 **Live Demo**: [My Dream XI](https://my-dream-xi-bd.netlify.app/)
 
-Currently, two official plugins are available:
+## 📜 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**My Dream XI** is an engaging web application designed for cricket fans who want to create their fantasy teams. Users can browse a wide selection of players, view stats, and make strategic selections to build their dream team.
+
+## 🛠 Technologies Used
+
+- **React** - Dynamic user interface
+- **Tailwind CSS** - Modern, responsive design
+- **Netlify** - Quick and easy deployment
+
+## 🌟 Key Features
+
+1. **Player Profiles**: Detailed player stats, roles, and images.
+2. **Budget Tracking**: Keep track of player costs to manage your budget.
+3. **Easy Selection**: Select and manage players seamlessly in your dream team.
