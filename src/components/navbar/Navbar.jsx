@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Navbar = ({money}) => {
     return (
-        <nav className='flex flex-col md:flex-row md:justify-between justify-center items-center mb-10 mt-5 gap-y-4 md:gap-y-0'>
+        <nav className='flex flex-col md:flex-row md:justify-between justify-center items-center mb-10 mt-5 gap-y-4 md:gap-y-0 '>
             <div>
                 <img src={Logo} alt="" />
             </div>

@@ -3,7 +3,7 @@ import Cricket from '../../assets/image/banner-main.png'
 
 const Banner = ({handleAddMoney}) => {
     return (
-        <div className="flex flex-col justify-center items-center gap-y-7 border-2 border-black p-10 md:p-20 rounded-xl bg-gradient-to-bl from-[#0f0f0f] via-[#080417] to-[#7e604f] text-white mb-10">
+        <div className="flex flex-col justify-center items-center gap-y-7 border-2 border-black p-10 md:p-20 rounded-xl bg-gradient-to-bl from-[#816060] via-[#080417] to-[#583623] text-white mb-10">
   
        
         <div className="relative z-10 flex flex-col items-center text-center my-16 gap-y-9">

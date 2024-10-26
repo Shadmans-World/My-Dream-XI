@@ -3,6 +3,9 @@ import Banner from "./components/banner/Banner";
 import Navbar from "./components/navbar/Navbar";
 import PlayerList from "./components/Player-List/PlayerList";
 import { useEffect } from "react";
+import Footer from "./components/footer/Footer";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const App = () => {
@@ -20,71 +23,87 @@ const App = () => {
     .then(data => setPlayers(data))
   },[])
 
-  
+  const handleRemovePlayer = (playerId) => {
+    // Remove the player from the selected players array
+    const newSelectPlayer = selectPlayer.filter((player) => player.playerId !== playerId);
+    setSelectPlayer(newSelectPlayer); 
+    toast.success('Removed player from the team successfully')
+};
 
-  // const handleAddPlayer = (player) => {
-  //   const isExist = selectPlayer.find(previousPlayer => previousPlayer.playerId === player.playerId);
-  //   if (!isExist && selectPlayer.length<6) {
-  //     const newSelectPlayer = [...selectPlayer, player];
-  //     setSelectPlayer(newSelectPlayer);
-  //   } else {
-  //     alert('Player is already Exist');
-  //   }
-  // };
+
 
   const handleAddPlayer = (player) => {
+    // Check if player already exists
     const isExist = selectPlayer.find(previousPlayer => previousPlayer.playerId === player.playerId);
 
     if (isExist) {
-        alert('Player is already Exist');
-    } else if (selectPlayer.length >= 6) {
-        alert('Your booking criteria is full');
+        toast('Player is already Exist');
+        return; 
+    } 
+    
+    // Check if booking criteria is full
+    if (selectPlayer.length >= 6) {
+        toast.warn('Your booking criteria is full');
+        return; 
+    }
+    
+    // Check if enough balance is available to select the player
+    if (money >= player.biddingPrice ) {
+      handleReduceMoney(player.biddingPrice); 
+        const newSelectPlayer = [...selectPlayer, player];
+        setSelectPlayer(newSelectPlayer);
+        toast.success(`You successfully sign this player`)
     } else {
-        // Check if enough balance is available to select the player
-        if (money >= player.biddingPrice) {
-            handleReduceMoney(player.biddingPrice); // Deduct money
-            const newSelectPlayer = [...selectPlayer, player];
-            setSelectPlayer(newSelectPlayer);
-        } 
+      toast.error('Money is shortage to sign a player');
     }
 };
+
 
 
   const handleAddMoney = () =>{
     const claimMoney = 6000000;
     setMoney(claimMoney+ money);
+    toast.success(`Claim Money Successfully`)
     
   }
-  console.log(`money after claim ${money}`)
+  
   
   const handleReduceMoney = (biddingPrice) =>{
+    
     if(money >= biddingPrice && money > 0){
       let newMoney = money - biddingPrice
       setMoney(newMoney)
     }
     else{
 
-      alert('Money is shortage to sign a player')
+      toast.error('Money is shortage to sign a player')
     }
   }
-  console.log(`Money after reduced ${money}`)
+  
 
   
   
   return (
-    <div className="max-w-[1440px] mx-auto p-5">
-      {/* Navbar */}
-      <Navbar money={money}></Navbar>
-      {/* Banner */}
-      <Banner handleAddMoney={handleAddMoney}></Banner>
+    
+    <div>
+      <div className="max-w-[85%] mx-auto p-5">
+         {/* Navbar */}
+        <Navbar money={money}></Navbar>
+        {/* Banner */}
+        <Banner handleAddMoney={handleAddMoney}></Banner>
 
-      {/* Players */}
-      <PlayerList players={players} selectPlayer={selectPlayer} handleAddPlayer={handleAddPlayer} handleReduceMoney={handleReduceMoney}></PlayerList>
-          {/* Available */}
-          {/* Selected */}
+        {/* Players */}
+        <PlayerList players={players} selectPlayer={selectPlayer} handleAddPlayer={handleAddPlayer} handleRemovePlayer={handleRemovePlayer}></PlayerList>
+            {/* Available */}
+            {/* Selected */}
+
+      </div>
+     
       
-      {/* Newsletter */}
+      
       {/* Footer */}
+      <Footer></Footer>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };

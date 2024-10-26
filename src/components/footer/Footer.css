@@ -1,0 +1,19 @@
+
+
+.bg-container {
+    position: absolute; 
+    overflow: hidden; 
+}
+
+.bg-blur {
+    background-image: url('../../assets/image/bg-shadow.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(8px); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; 
+}
